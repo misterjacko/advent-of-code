@@ -37,7 +37,7 @@ func main() {
 	data := LoadInput("input.txt")
 	fmt.Printf("Part 1: %v\n", Part1(data))
 	fmt.Println(time.Since(startTime))
-	// fmt.Printf("Part 1: %v\n", Part2(data))
+	// fmt.Printf("Part 2: %v\n", Part2(data))
 	// fmt.Println(time.Since(startTime))
 
 }
