@@ -1,4 +1,4 @@
-module Template
+module Day03
 
 go 1.17
 
