@@ -2,32 +2,52 @@ from datetime import datetime
 import itertools
 
 
-def part1(data):
-    return False
-
-def part2(data):
-    return False
-
+#############
+# Prep Work #
+#############
 
 def loadData(dataFile):
     with open(dataFile, "r") as f:
         lines = f.readlines()
-    return [line.strip().split(',') for line in lines]
+    return [line.strip() for line in lines]
 
 def test_loadData():
-    assert loadData("test_input.txt") == ["1","3","5","3"]
+    assert loadData("test_input.txt") == []
 
 
-def t_part1():
+def process_data(data):
+    return data
+
+def test_process_data():
+    test_data = loadData("test_input.txt")
+    assert process_data(True) == True
+    assert process_data(test_data) == []
+
+
+##########
+# Part 1 #
+##########
+
+def part1(data):
+    return False
+
+def test_part1():
     testData = "test_input.txt"
     data = loadData(testData)
-    assert part1(data) == "1" 
+    assert part1(data) == False
 
 
-def t_part2():
+##########
+# Part 2 #
+##########
+
+def part2(data):
+    return False
+
+def test_part2():
     testData = "test_input.txt"
     data = loadData(testData)
-    assert part2(data) == True 
+    assert part2(data) == False
 
 
 if __name__ == "__main__":
