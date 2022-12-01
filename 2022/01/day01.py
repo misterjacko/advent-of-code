@@ -11,16 +11,7 @@ def loadData(dataFile):
     return [line.strip() for line in lines]
 
 def test_loadData():
-    assert loadData("test_input.txt") == []
-
-
-def process_data(data):
-    return data
-
-def test_process_data():
-    test_data = loadData("test_input.txt")
-    assert process_data(True) == True
-    assert process_data(test_data) == []
+    assert loadData("test_input.txt") == ["1000","2000","3000","","4000","","5000","6000","","7000","8000","9000","","10000"]
 
 
 ##########
@@ -28,12 +19,21 @@ def test_process_data():
 ##########
 
 def part1(data):
-    return False
+    max_elf = 0
+    cur = 0
+    for cals in data:
+        if cals == "":
+            cur = 0
+        else:
+            cur += int(cals)
+            max_elf = max(max_elf, cur)
+    return max_elf
+        
 
 def test_part1():
     testData = "test_input.txt"
     data = loadData(testData)
-    assert part1(data) == False
+    assert part1(data) == 24000
 
 
 ##########
@@ -41,12 +41,27 @@ def test_part1():
 ##########
 
 def part2(data):
-    return False
+    l = [0] * 3
+    cur = 0
+    for cals in data:
+        if cals == "":
+            if cur > l[0]:
+                l[0] = cur
+                l.sort()
+            cur = 0
+        else:
+            cur += int(cals)
+    if cur > l[0]:
+        l[0] = cur
+
+
+    return sum(l)
+        
 
 def test_part2():
     testData = "test_input.txt"
     data = loadData(testData)
-    assert part2(data) == False
+    assert part2(data) == 45000
 
 
 if __name__ == "__main__":
