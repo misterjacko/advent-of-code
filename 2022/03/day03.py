@@ -41,7 +41,7 @@ def part2(data):
     total = 0
     for i in range(0, len(data), 3):
         intersect = set(data[i]).intersection(set(data[i+1]), set(data[i+2]))
-        intersect =list(intersect)[0]
+        intersect = list(intersect)[0]
         if ord(intersect) >= ord("a"):
             total += ord(intersect) - ord("a") + 1
         else:
