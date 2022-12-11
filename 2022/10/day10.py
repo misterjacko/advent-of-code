@@ -50,23 +50,29 @@ def print_crt(data):
         print("".join(data[start:start+40]))
 
 
+def set_i(i, result):
+    if i + 1 == 40: # print and reset line
+        print("".join(result))
+        result = [" "] * 40
+        return 0, result
+    return i + 1, result
+
+
 def part2(data):
-    result = [" "] * 240 # looks cleaner for output
-    sprite_pos = set()
-    for i in range(0, 201, 40):
-        sprite_pos |= {i, i+1, i+2}
+    result = [" "] * 40 # looks cleaner for output
+    sprite_pos = {0,1,2}
     i = 0
     for line in data:
         if i in sprite_pos:
             result[i] = "#"
         if line[0] == "noop":
-            i += 1
+            i, result = set_i(i, result)
         else:
-            if i+1 in sprite_pos:
-                result[i+1] = "#"
-            i += 2
+            i, result = set_i(i, result)
+            if i in sprite_pos:
+                result[i] = "#"
+            i, result = set_i(i, result)
             sprite_pos = {pos + int(line[1]) for pos in sprite_pos}
-    print_crt(result)
     return True
 
 def test_part2():
