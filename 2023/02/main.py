@@ -28,19 +28,19 @@ def loadData(dataFile):
 ##########
 
 def part1(data):
+    sum = 0
     max_dice = {
         "red": 12,
         "green": 13,
         "blue": 14,
     }
-    sum = 0
     for line in data:
         valid= True
         dice_dict = {
-        "red": 0,
-        "green": 0,
-        "blue": 0,
-    }
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+        }
         game_number = int(line.split(":")[0].split(" ")[1])
         dice_rolls = line.split(":")[1].split(";")
         for roll in dice_rolls:
@@ -48,14 +48,11 @@ def part1(data):
                 color = dice.split()[1].strip()
                 dice_count = int(dice.split()[0].strip())
                 dice_dict[color] = max(dice_count, dice_dict[color])
-        
         for k in max_dice.keys():
             if dice_dict[k] > max_dice[k]:
                 valid = False
         if valid:
             sum += game_number
-
-        
     return sum
 
 def test_part1():
@@ -71,10 +68,11 @@ def test_part1():
 def part2(data):
     sum = 0
     for line in data:
+        power = 1
         dice_dict = {
-        "red": 0,
-        "green": 0,
-        "blue": 0,
+            "red": 0,
+            "green": 0,
+            "blue": 0,
         }
         dice_rolls = line.split(":")[1].split(";")
         for roll in dice_rolls:
@@ -82,7 +80,6 @@ def part2(data):
                 color = dice.split()[1].strip()
                 dice_count = int(dice.split()[0].strip())
                 dice_dict[color] = max(dice_count, dice_dict[color])
-        power = 1
         for v in dice_dict.values():
             power *= v
         sum += power
