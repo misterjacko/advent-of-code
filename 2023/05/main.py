@@ -111,18 +111,18 @@ def part2(seeds, maps):
     while i < len(seeds):
         seed_ranges.append(range(seeds[i], seeds[i]+seeds[i+1]))
         i+=2
-    for i, rng in enumerate(seed_ranges):
-            print(f"starting {i+1} of {len(seed_ranges)}")
- 
-            soil = calcualte_diff2([rng], maps["seed-to-soil"])
-            fertilizer = calcualte_diff2(soil, maps["soil-to-fertilizer"])
-            water = calcualte_diff2(fertilizer, maps["fertilizer-to-water"])
-            light = calcualte_diff2(water, maps["water-to-light"])
-            temperature = calcualte_diff2(light, maps["light-to-temperature"])
-            humidity = calcualte_diff2(temperature, maps["temperature-to-humidity"])
-            location = calcualte_diff2(humidity, maps["humidity-to-location"])
-            for rng in location:
-                lowest_location = min(lowest_location, min(rng))
+    # for i, rng in enumerate(seed_ranges):
+    #         print(f"starting {i+1} of {len(seed_ranges)}")
+    print(seed_ranges)
+    soil = calcualte_diff2(seed_ranges, maps["seed-to-soil"])
+    fertilizer = calcualte_diff2(soil, maps["soil-to-fertilizer"])
+    water = calcualte_diff2(fertilizer, maps["fertilizer-to-water"])
+    light = calcualte_diff2(water, maps["water-to-light"])
+    temperature = calcualte_diff2(light, maps["light-to-temperature"])
+    humidity = calcualte_diff2(temperature, maps["temperature-to-humidity"])
+    location = calcualte_diff2(humidity, maps["humidity-to-location"])
+    for rng in location:
+        lowest_location = min(lowest_location, min(rng))
     return lowest_location
 
 def test_part2():
