@@ -85,6 +85,7 @@ def part1(data):
         groups[map_hand(raw_hand)].append([sortable_cards, value]) 
 
     group_order = sorted(groups)
+    print(groups)
     for group in group_order: # smallest to largest
         sorted_group = sort_groups(groups[group]) # smallest to largest
         for hand in sorted_group:
@@ -96,7 +97,7 @@ def part1(data):
 def test_part1():
     testData = "test_input.txt"
     data = loadData(testData)
-    assert part1(data) == 6440
+    assert part1(data) == 644000
 
 
 ##########
